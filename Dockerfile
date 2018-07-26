@@ -4,7 +4,9 @@ USER root
 
 COPY . /tmp/src
 
-RUN mv /tmp/src/.s2i/bin /tmp/scripts
+RUN mv /tmp/src/.s2i/bin /tmp/scripts &&\
+    mkdir /tmp/test &&\
+    yum install -y vim
 
 RUN rm -rf /tmp/src/.git* && \
     chown -R 1001 /tmp/src && \
